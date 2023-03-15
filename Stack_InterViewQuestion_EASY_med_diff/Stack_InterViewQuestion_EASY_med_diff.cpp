@@ -101,7 +101,7 @@ void balancingBrackets2() //balancing Brackets using Stack(by maintaing stack fo
 
 //Remove adjacent duplicates from the string..
 
-void removeDublicate()
+void removeDuplicate()
 {
     string s;
     cin >> s;
@@ -135,12 +135,14 @@ void removeDublicate()
     cout << s << endl;
 }
 
+//Remove K number of adjacent chars from a string ...Which means ,if K=3, then remove 3 same adjacent chars from a string.
 
+  
 
 
 int main()
 {
-    removeDublicate();
+    removeDuplicate();
    // balancingBrackets2();
     return 0;
 }
