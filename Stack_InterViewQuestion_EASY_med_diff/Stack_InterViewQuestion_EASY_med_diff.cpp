@@ -78,6 +78,11 @@ void balancingBrackets2() //balancing Brackets using Stack(by maintaing stack fo
             {
                 st.pop();
             }
+            else
+            {
+                cout << "Invalid Sequence" << endl;
+                return;
+            }
         }
         i++;
 
@@ -92,6 +97,9 @@ void balancingBrackets2() //balancing Brackets using Stack(by maintaing stack fo
     }
 
 }
+
+
+
 
 int main()
 {
