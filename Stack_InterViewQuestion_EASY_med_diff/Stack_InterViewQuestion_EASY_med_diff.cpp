@@ -99,11 +99,48 @@ void balancingBrackets2() //balancing Brackets using Stack(by maintaing stack fo
 }
 
 
+//Remove adjacent duplicates from the string..
+
+void removeDublicate()
+{
+    string s;
+    cin >> s;
+    stack<char> st;
+    int i = 0;
+    while (i < s.length())
+    {
+        if (st.empty())
+        {
+            st.push(s[i]);
+        }
+        else
+        {
+            if (st.top() == s[i])
+            {
+                st.pop();
+            }
+            else {
+                st.push(s[i]);
+            }
+        }
+
+        i++;
+    }
+    s = "";
+    while (!st.empty())
+    {
+        s = st.top() + s;   //string CONCATINATION....
+        st.pop();
+    }
+    cout << s << endl;
+}
+
+
 
 
 int main()
 {
-    
-    balancingBrackets2();
+    removeDublicate();
+   // balancingBrackets2();
     return 0;
 }
