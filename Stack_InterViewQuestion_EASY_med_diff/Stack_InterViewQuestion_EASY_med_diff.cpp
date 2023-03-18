@@ -187,6 +187,21 @@ void removeKDuplicates()
     cout << s;
  }
 
+//Find the Previous smallest element from array
+
+void previousSmaller(int* prev, int* num, int n)
+{
+    stack<int> st;
+    for (int i = 0; i < n; i++)
+    {
+        while (!st.empty() && num[st.top()] >= num[i])
+            st.pop();
+
+        prev[i] = (st.empty() ? -1 : st.top()); //using TERNARY OPERATOR FOR IF/ELSE STATEMENT,...
+        st.push(i);
+    }
+}
+
 
 
 
@@ -194,7 +209,24 @@ int main()
 
 
 {
-    removeKDuplicates();
+    int n;
+    cout << "Please Enter a value less than 50" << endl;
+    cin >> n;
+    int num[50];
+
+    for (int i = 0; i < n; i++)
+        cin >> num[i];
+    int prev[50];
+    previousSmaller(prev, num, n);
+
+    
+    for (int i = 0; i < n; i++)
+        if (prev[i] == -1)
+            cout << "-1"<<" ";
+        else
+            cout << num[prev[i]] << " ";
+    
+    //removeKDuplicates();
     //removeDuplicate();
    // balancingBrackets2();
     return 0;
