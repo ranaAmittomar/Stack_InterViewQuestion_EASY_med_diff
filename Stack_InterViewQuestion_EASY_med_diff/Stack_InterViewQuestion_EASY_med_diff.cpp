@@ -137,12 +137,65 @@ void removeDuplicate()
 
 //Remove K number of adjacent chars from a string ...Which means ,if K=3, then remove 3 same adjacent chars from a string.
 
-  
+void removeKDuplicates()
+{
+    string s;
+    cin >> s;
+    int k;
+    cin >> k;
+
+    stack<pair<char, int>> st;
+    pair<char, int> t;
+    int i = 0;
+
+    while (i<s.length())
+    {
+        if (st.empty())
+        {
+            st.push({ s[i],1 });
+        }
+        else
+        {
+            if (st.top().first == s[i])
+            {
+                if (st.top().second == (k - 1))
+                {
+                    //code here
+                    for (int j = 0; j < k - 1; j++)
+                        st.pop();
+                }
+                else {
+                    //code here
+                    st.push({ s[i],st.top().second + 1 });
+                }
+
+            }
+            else {
+                st.push({ s[i],1 });
+            }
+        }
+
+        i++;
+    }
+
+    s = "";
+    while (!st.empty())
+    {
+        s = st.top().first + s;
+        st.pop();
+    }
+    cout << s;
+ }
+
+
 
 
 int main()
+
+
 {
-    removeDuplicate();
+    removeKDuplicates();
+    //removeDuplicate();
    // balancingBrackets2();
     return 0;
 }
