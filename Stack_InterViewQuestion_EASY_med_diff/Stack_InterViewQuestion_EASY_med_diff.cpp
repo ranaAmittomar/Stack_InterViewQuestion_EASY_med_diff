@@ -202,7 +202,38 @@ void previousSmaller(int* prev, int* num, int n)
     }
 }
 
+//Find the next smaller element...
 
+void nextSmaller(int* next, int* num, int n)
+{
+    stack<int> st;
+    for (int i = n-1; i >=0; i--)
+    {
+        while (!st.empty() && num[st.top()] >= num[i])
+            st.pop();
+
+        next[i] = (st.empty() ? -1 : st.top()); //using TERNARY OPERATOR FOR IF/ELSE STATEMENT,...
+        st.push(i);
+    }
+}
+
+//Find the previous greater number....
+
+
+void previousGreater(int* prev, int* num, int n)
+{
+
+    stack<int> st;
+
+    for (int i = 0; i < n; i++)
+    {
+        while (!st.empty() && num[st.top()] <= num[i])
+            st.pop();
+
+        prev[i] = (st.empty() ? -1 : st.top()); //using TERNARY OPERATOR FOR IF/ELSE STATEMENT,...
+        st.push(i);
+    }
+}
 
 
 int main()
@@ -213,11 +244,15 @@ int main()
     cout << "Please Enter a value less than 50" << endl;
     cin >> n;
     int num[50];
-
     for (int i = 0; i < n; i++)
-        cin >> num[i];
-    int prev[50];
+        cin >> num[i]; 
+
+    int prev[50],next[50];
+
+
     previousSmaller(prev, num, n);
+    nextSmaller(next, num, n);
+
 
     
     for (int i = 0; i < n; i++)
@@ -226,6 +261,14 @@ int main()
         else
             cout << num[prev[i]] << " ";
     
+
+    cout << endl;
+    for (int i = 0; i < n; i++)
+        if (next[i] == -1)
+            cout << "-1" << " ";
+        else
+            cout << num[next[i]] << " ";
+
     //removeKDuplicates();
     //removeDuplicate();
    // balancingBrackets2();
